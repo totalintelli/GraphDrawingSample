@@ -53,10 +53,15 @@ namespace WinForm
             RectangleF Rect = new RectangleF(RectMargin.Left, RectMargin.Top + DrawingHeight * 1.2f, DrawingWidth * 0.9f, DrawingHeight * 0.9f);
             // 직사각형을 그리는 사각형
             RectangleF RectAngle = new RectangleF(RectMargin.Left + DrawingWidth * 1.5f, RectMargin.Top + DrawingHeight * 1.2f, DrawingWidth * 0.5f, DrawingHeight * 0.9f);
-            // 삼각형을 그리는 사각형
+            // 삼각형의 좌표
+            PointF[] TrianglePoints = {
+                new PointF(RectMargin.Left + DrawingWidth * 2.5f, RectMargin.Top + DrawingHeight * 1.2f),
+                new PointF(RectMargin.Left + DrawingWidth * 2.3f, RectMargin.Top + DrawingHeight * 2.1f),
+                new PointF(RectMargin.Left + DrawingWidth * 2.7f, RectMargin.Top + DrawingHeight * 2.1f)
+            };
             // 사다리꼴을 그리는 사각형
             // 마름모를 그리는 사각형
-            // 오각형을 그리는 사각형
+            // 오각형의 좌표
             // 육각형을 그리는 사각형
             // 팔각형을 그리는 사각형
             // 평행사변형을 그리는 사각형
@@ -76,6 +81,7 @@ namespace WinForm
             // 직사각형을 그린다.
             e.Graphics.FillRectangle(FigureColor, RectAngle);
             // 삼각형을 그린다.
+            e.Graphics.FillPolygon(FigureColor, TrianglePoints);
             // 사다리꼴을 그린다.
             // 마름모를 그린다.
             // 오각형을 그린다.
