@@ -71,6 +71,16 @@ namespace WinForm
                 new PointF(RectMargin.Left + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeight * 2.9f)
             };
             // 육각형의 좌표
+            PointF[] HexagonPoints =
+            {
+                new PointF(RectMargin.Left + DrawingWidth + DrawingWidth / 4.0f, RectMargin.Top + DrawingHeight * 2.2f),
+                new PointF(RectMargin.Left + DrawingWidth + DrawingWidth * 3 / 4.0f, RectMargin.Top + DrawingHeight * 2.2f),
+                new PointF(RectMargin.Left + DrawingWidth * 2.0f, RectMargin.Top + DrawingHeight * 2.0f + DrawingHeight * 4 / 7.0f),
+                new PointF(RectMargin.Left + DrawingWidth + DrawingWidth * 3 / 4.0f, RectMargin.Top + DrawingHeight * 2.9f),
+                new PointF(RectMargin.Left + DrawingWidth + DrawingWidth / 4.0f, RectMargin.Top + DrawingHeight * 2.9f),
+                new PointF(RectMargin.Left + DrawingWidth, RectMargin.Top + DrawingHeight * (2.0f + 4 / 7.0f))
+
+            };
             // 팔각형의 좌표
             // 평행사변형의 좌표
             // 초승달을 그리는 사각형
@@ -99,6 +109,7 @@ namespace WinForm
             e.Graphics.FillPolygon(FigureColor, PentagonPoints);
 
             // 육각형을 그린다.
+            e.Graphics.FillPolygon(FigureColor, HexagonPoints);
             // 팔각형을 그린다.
             // 평행사변형을 그린다.
             // 초승달을 그린다.
