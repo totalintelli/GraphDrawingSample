@@ -64,11 +64,11 @@ namespace WinForm
             // 오각형의 좌표
             PointF[] PentagonPoints =
             {
-                new PointF(RectMargin.Left + DrawingWidth * 0.1f, RectMargin.Top + DrawingHeight * 2.5f),
-                new PointF(RectMargin.Left + DrawingWidth * 0.5f, RectMargin.Top + DrawingHeight * 2.2f),
+                new PointF(RectMargin.Left, RectMargin.Top + DrawingHeight * 2.5f),
+                new PointF(RectMargin.Left + DrawingWidth * 0.45f, RectMargin.Top + DrawingHeight * 2.2f),
                 new PointF(RectMargin.Left + DrawingWidth * 0.9f, RectMargin.Top + DrawingHeight * 2.5f),
                 new PointF(RectMargin.Left + DrawingWidth * 0.7f, RectMargin.Top + DrawingHeight * 2.9f),
-                new PointF(RectMargin.Left + DrawingWidth * 0.3f, RectMargin.Top + DrawingHeight * 2.9f)
+                new PointF(RectMargin.Left + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeight * 2.9f)
             };
             // 육각형을 그리는 사각형
             // 팔각형을 그리는 사각형
