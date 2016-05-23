@@ -40,11 +40,18 @@ namespace WinForm
             float DrawingHeight = (panel1.ClientRectangle.Height - (RectMargin.Top + RectMargin.Bottom)) / 3;
             // 드로잉 너비의 두 배
             float DrawingWidthDouble = DrawingWidth * 2f;
+            // 도형들의 색상
+            SolidBrush FigureColor = new SolidBrush(Color.Purple);
             // 원을 그리는 사각형
             RectangleF CircleRect = new RectangleF(RectMargin.Left, RectMargin.Top, DrawingWidth, DrawingHeight);
-
+            // 타원을 그리는 사각형
+            RectangleF EllipseRect = new RectangleF(RectMargin.Left + DrawingWidth * 1.5f, RectMargin.Top, DrawingWidth /  2, DrawingHeight);  
+               
             // 원을 그린다.
-            e.Graphics.FillEllipse(new SolidBrush(Color.Purple), CircleRect);
+            e.Graphics.FillEllipse(FigureColor, CircleRect);
+
+            // 타원을 그린다.
+            e.Graphics.FillEllipse(FigureColor, EllipseRect);
 
 
 

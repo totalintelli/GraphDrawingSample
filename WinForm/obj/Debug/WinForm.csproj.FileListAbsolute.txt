@@ -46,3 +46,12 @@ D:\Projects\첨부파일1\WinForm\obj\Debug\WinForm.csprojResolveAssemblyReferen
 D:\Projects\첨부파일1\WinForm\obj\Debug\WinForm.Form1.resources
 D:\Projects\첨부파일1\WinForm\obj\Debug\WinForm.Properties.Resources.resources
 D:\Projects\첨부파일1\WinForm\obj\Debug\WinForm.csproj.GenerateResource.Cache
+D:\Projects\GraphDrawingSample\WinForm\bin\Debug\WinForm.exe.config
+D:\Projects\GraphDrawingSample\WinForm\obj\Debug\WinForm.exe
+D:\Projects\GraphDrawingSample\WinForm\obj\Debug\WinForm.pdb
+D:\Projects\GraphDrawingSample\WinForm\bin\Debug\WinForm.exe
+D:\Projects\GraphDrawingSample\WinForm\bin\Debug\WinForm.pdb
+D:\Projects\GraphDrawingSample\WinForm\obj\Debug\WinForm.csprojResolveAssemblyReference.cache
+D:\Projects\GraphDrawingSample\WinForm\obj\Debug\WinForm.Form1.resources
+D:\Projects\GraphDrawingSample\WinForm\obj\Debug\WinForm.Properties.Resources.resources
+D:\Projects\GraphDrawingSample\WinForm\obj\Debug\WinForm.csproj.GenerateResource.Cache
