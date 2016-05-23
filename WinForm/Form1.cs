@@ -59,9 +59,17 @@ namespace WinForm
                 new PointF(RectMargin.Left + DrawingWidth * 2.3f, RectMargin.Top + DrawingHeight * 2.1f),
                 new PointF(RectMargin.Left + DrawingWidth * 2.7f, RectMargin.Top + DrawingHeight * 2.1f)
             };
-            // 사다리꼴을 그리는 사각형
+            // 사다리꼴의 좌표
             // 마름모를 그리는 사각형
             // 오각형의 좌표
+            PointF[] PentagonPoints =
+            {
+                new PointF(RectMargin.Left + DrawingWidth * 0.1f, RectMargin.Top + DrawingHeight * 2.5f),
+                new PointF(RectMargin.Left + DrawingWidth * 0.5f, RectMargin.Top + DrawingHeight * 2.2f),
+                new PointF(RectMargin.Left + DrawingWidth * 0.9f, RectMargin.Top + DrawingHeight * 2.5f),
+                new PointF(RectMargin.Left + DrawingWidth * 0.7f, RectMargin.Top + DrawingHeight * 2.9f),
+                new PointF(RectMargin.Left + DrawingWidth * 0.3f, RectMargin.Top + DrawingHeight * 2.9f)
+            };
             // 육각형을 그리는 사각형
             // 팔각형을 그리는 사각형
             // 평행사변형을 그리는 사각형
@@ -76,21 +84,26 @@ namespace WinForm
             // 계란을 그린다.
             // 네 잎을 그린다.
             // 곡선으로 이루어진 삼각형을 그린다.
+
             // 사각형을 그린다.
             e.Graphics.FillRectangle(FigureColor, Rect);
+
             // 직사각형을 그린다.
             e.Graphics.FillRectangle(FigureColor, RectAngle);
             // 삼각형을 그린다.
             e.Graphics.FillPolygon(FigureColor, TrianglePoints);
+
             // 사다리꼴을 그린다.
             // 마름모를 그린다.
             // 오각형을 그린다.
+            e.Graphics.FillPolygon(FigureColor, PentagonPoints);
+
             // 육각형을 그린다.
             // 팔각형을 그린다.
             // 평행사변형을 그린다.
             // 초승달을 그린다.
 
-
+            
 
             //**************************
         }
