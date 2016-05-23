@@ -70,9 +70,9 @@ namespace WinForm
                 new PointF(RectMargin.Left + DrawingWidth * 0.7f, RectMargin.Top + DrawingHeight * 2.9f),
                 new PointF(RectMargin.Left + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeight * 2.9f)
             };
-            // 육각형을 그리는 사각형
-            // 팔각형을 그리는 사각형
-            // 평행사변형을 그리는 사각형
+            // 육각형의 좌표
+            // 팔각형의 좌표
+            // 평행사변형의 좌표
             // 초승달을 그리는 사각형
 
             // 원을 그린다.
