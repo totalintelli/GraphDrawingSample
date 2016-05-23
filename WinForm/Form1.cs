@@ -43,13 +43,14 @@ namespace WinForm
             // 도형들의 색상
             SolidBrush FigureColor = new SolidBrush(Color.Purple);
             // 원을 그리는 사각형
-            RectangleF CircleRect = new RectangleF(RectMargin.Left, RectMargin.Top, DrawingWidth, DrawingHeight);
+            RectangleF CircleRect = new RectangleF(RectMargin.Left, RectMargin.Top, DrawingWidth * 0.9f, DrawingHeight * 0.9f);
             // 타원을 그리는 사각형
-            RectangleF EllipseRect = new RectangleF(RectMargin.Left + DrawingWidth * 1.5f, RectMargin.Top, DrawingWidth /  2, DrawingHeight);  
+            RectangleF EllipseRect = new RectangleF(RectMargin.Left + DrawingWidth * 1.5f, RectMargin.Top, DrawingWidth * 0.9f /  2, DrawingHeight * 0.9f);
             // 계란을 그리는 사각형
             // 네잎을 그리는 사각형
             // 곡선으로 이루어진 삼각형을 그리는 사각형
             // 사각형을 그리는 사각형
+            RectangleF Rect = new RectangleF(RectMargin.Left, RectMargin.Top + DrawingHeight * 1.2f, DrawingWidth * 0.9f, DrawingHeight * 0.9f);
             // 직사각형을 그리는 사각형
             // 삼각형을 그리는 사각형
             // 사다리꼴을 그리는 사각형
@@ -70,6 +71,7 @@ namespace WinForm
             // 네 잎을 그린다.
             // 곡선으로 이루어진 삼각형을 그린다.
             // 사각형을 그린다.
+            e.Graphics.FillRectangle(FigureColor, Rect);
             // 직사각형을 그린다.
             // 삼각형을 그린다.
             // 사다리꼴을 그린다.
