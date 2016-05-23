@@ -46,12 +46,39 @@ namespace WinForm
             RectangleF CircleRect = new RectangleF(RectMargin.Left, RectMargin.Top, DrawingWidth, DrawingHeight);
             // 타원을 그리는 사각형
             RectangleF EllipseRect = new RectangleF(RectMargin.Left + DrawingWidth * 1.5f, RectMargin.Top, DrawingWidth /  2, DrawingHeight);  
+            // 계란을 그리는 사각형
+            // 네잎을 그리는 사각형
+            // 곡선으로 이루어진 삼각형을 그리는 사각형
+            // 사각형을 그리는 사각형
+            // 직사각형을 그리는 사각형
+            // 삼각형을 그리는 사각형
+            // 사다리꼴을 그리는 사각형
+            // 마름모를 그리는 사각형
+            // 오각형을 그리는 사각형
+            // 육각형을 그리는 사각형
+            // 팔각형을 그리는 사각형
+            // 평행사변형을 그리는 사각형
+            // 초승달을 그리는 사각형
                
             // 원을 그린다.
             e.Graphics.FillEllipse(FigureColor, CircleRect);
 
             // 타원을 그린다.
             e.Graphics.FillEllipse(FigureColor, EllipseRect);
+
+            // 계란을 그린다.
+            // 네 잎을 그린다.
+            // 곡선으로 이루어진 삼각형을 그린다.
+            // 사각형을 그린다.
+            // 직사각형을 그린다.
+            // 삼각형을 그린다.
+            // 사다리꼴을 그린다.
+            // 마름모를 그린다.
+            // 오각형을 그린다.
+            // 육각형을 그린다.
+            // 팔각형을 그린다.
+            // 평행사변형을 그린다.
+            // 초승달을 그린다.
 
 
 
