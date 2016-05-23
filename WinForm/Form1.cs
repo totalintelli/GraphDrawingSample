@@ -52,6 +52,7 @@ namespace WinForm
             // 사각형을 그리는 사각형
             RectangleF Rect = new RectangleF(RectMargin.Left, RectMargin.Top + DrawingHeight * 1.2f, DrawingWidth * 0.9f, DrawingHeight * 0.9f);
             // 직사각형을 그리는 사각형
+            RectangleF RectAngle = new RectangleF(RectMargin.Left + DrawingWidth * 1.5f, RectMargin.Top + DrawingHeight * 1.2f, DrawingWidth * 0.5f, DrawingHeight * 0.9f);
             // 삼각형을 그리는 사각형
             // 사다리꼴을 그리는 사각형
             // 마름모를 그리는 사각형
@@ -60,7 +61,7 @@ namespace WinForm
             // 팔각형을 그리는 사각형
             // 평행사변형을 그리는 사각형
             // 초승달을 그리는 사각형
-               
+
             // 원을 그린다.
             e.Graphics.FillEllipse(FigureColor, CircleRect);
 
@@ -73,6 +74,7 @@ namespace WinForm
             // 사각형을 그린다.
             e.Graphics.FillRectangle(FigureColor, Rect);
             // 직사각형을 그린다.
+            e.Graphics.FillRectangle(FigureColor, RectAngle);
             // 삼각형을 그린다.
             // 사다리꼴을 그린다.
             // 마름모를 그린다.
