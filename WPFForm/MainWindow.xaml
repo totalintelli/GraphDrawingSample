@@ -1,0 +1,9 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:WPFForm" x:Class="WPFForm.MainWindow"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <local:CustomDrawing Margin="0"/>
+    </Grid>
+</Window>

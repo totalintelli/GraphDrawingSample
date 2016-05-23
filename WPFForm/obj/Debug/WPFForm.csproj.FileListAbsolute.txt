@@ -1,0 +1,48 @@
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\bin\Debug\WPFForm.exe
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\bin\Debug\WPFForm.pdb
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\WPFForm.csprojResolveAssemblyReference.cache
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\MainWindow.baml
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\MainWindow.g.cs
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\App.g.cs
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\WPFForm_MarkupCompile.cache
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\WPFForm.g.resources
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\WPFForm.Properties.Resources.resources
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\WPFForm.csproj.GenerateResource.Cache
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\WPFForm.exe
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\WPFForm.pdb
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\obj\Debug\WPFForm_MarkupCompile.lref
+C:\Users\hong3738\Desktop\찌르레기\WPFForm\bin\Debug\WPFForm.exe.config
+Z:\T.교육\데브존 그래프 모듈 교육 자료\1. 그래프 초기 모듈\기초 드로잉 프로젝트\WPFForm\bin\Debug\WPFForm.exe.config
+Z:\T.교육\데브존 그래프 모듈 교육 자료\1. 그래프 초기 모듈\기초 드로잉 프로젝트\WPFForm\obj\Debug\WPFForm.exe
+Z:\T.교육\데브존 그래프 모듈 교육 자료\1. 그래프 초기 모듈\기초 드로잉 프로젝트\WPFForm\obj\Debug\WPFForm.pdb
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\bin\Debug\WPFForm.exe.config
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\bin\Debug\WPFForm.exe
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\bin\Debug\WPFForm.pdb
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.csprojResolveAssemblyReference.cache
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\MainWindow.g.cs
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\App.g.cs
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm_MarkupCompile.cache
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm_MarkupCompile.lref
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\MainWindow.baml
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.g.resources
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.Properties.Resources.resources
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.csproj.GenerateResource.Cache
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.exe
+Z:\T.교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.pdb
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\bin\Debug\WPFForm.exe.config
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.exe
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.pdb
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\bin\Debug\WPFForm.exe
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\bin\Debug\WPFForm.pdb
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.csprojResolveAssemblyReference.cache
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\MainWindow.g.cs
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\App.g.cs
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm_MarkupCompile.cache
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm_MarkupCompile.lref
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\MainWindow.baml
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.g.resources
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.Properties.Resources.resources
+Z:\@데브존교육\1. 2D 그래프 개발 및 교육\과제 자료\단계A\첨부파일1\WPFForm\obj\Debug\WPFForm.csproj.GenerateResource.Cache
