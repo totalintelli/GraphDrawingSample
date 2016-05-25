@@ -90,54 +90,34 @@ namespace WinForm
             // 원을 그리는 사각형
             RectangleF CircleRect = new RectangleF(RectMargin.Left, RectMargin.Top, DrawingWidth, DrawingHeight);
             // 타원을 그리는 사각형
-            RectangleF EllipseRect = new RectangleF(RectMargin.Left + DrawingWidth * 1.2f, RectMargin.Top, DrawingWidth * 0.7f, DrawingHeight * 0.9f);
+            RectangleF EllipseRect = new RectangleF(RectMargin.Left + DrawingWidth + GapWidth + DrawingWidth * 0.15f, RectMargin.Top, DrawingWidth * 0.7f, DrawingHeight);
             // 계란을 그리는 사각형
             // 네잎을 그리는 사각형
             // 곡선으로 이루어진 삼각형을 그리는 사각형
             // 사각형을 그리는 사각형
-            RectangleF Rect = new RectangleF(RectMargin.Left, RectMargin.Top + DrawingHeight * 1.2f, DrawingWidth * 0.9f, DrawingHeight * 0.9f);
+            RectangleF Rect = new RectangleF(RectMargin.Left, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth, DrawingHeight);
             // 직사각형을 그리는 사각형
-            RectangleF RectAngle = new RectangleF(RectMargin.Left + DrawingWidth * 1.2f, RectMargin.Top + DrawingHeight * 1.2f, DrawingWidth * 0.7f, DrawingHeight * 0.9f);
+            RectangleF RectAngle = new RectangleF(RectMargin.Left + DrawingWidth + GapWidth + DrawingWidth * 0.15f, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth * 0.7f, DrawingHeight);
             // 삼각형의 좌표
-            PointF[] TrianglePoints = {
-                new PointF(RectMargin.Left + DrawingWidth * 2.5f, RectMargin.Top + DrawingHeight * 1.2f),
-                new PointF(RectMargin.Left + DrawingWidth * 2.2f, RectMargin.Top + DrawingHeight * 2.1f),
-                new PointF(RectMargin.Left + DrawingWidth * 2.8f, RectMargin.Top + DrawingHeight * 2.1f)
-            };
+            PointF[] TrianglePoints = CalculateVertices(3, DrawingWidth / 2.0f, 90.0f, 
+                                        new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f, 
+                                                    RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f));
             // 사다리꼴의 좌표
             // 마름모를 그리는 사각형
             // 오각형의 좌표
-            PointF[] PentagonPoints =
-            {
-                new PointF(RectMargin.Left, RectMargin.Top + DrawingHeight * 2.5f),
-                new PointF(RectMargin.Left + DrawingWidth * 0.45f, RectMargin.Top + DrawingHeight * 2.2f),
-                new PointF(RectMargin.Left + DrawingWidth * 0.9f, RectMargin.Top + DrawingHeight * 2.5f),
-                new PointF(RectMargin.Left + DrawingWidth * 0.7f, RectMargin.Top + DrawingHeight * 2.9f),
-                new PointF(RectMargin.Left + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeight * 2.9f)
-            };
-            // 육각형의 좌표
-            PointF[] HexagonPoints =
-            {
-                new PointF(RectMargin.Left + DrawingWidth + DrawingWidth / 4.0f, RectMargin.Top + DrawingHeight * 2.2f),
-                new PointF(RectMargin.Left + DrawingWidth + DrawingWidth * 3 / 4.0f, RectMargin.Top + DrawingHeight * 2.2f),
-                new PointF(RectMargin.Left + DrawingWidth * 2.0f, RectMargin.Top + DrawingHeight * 2.0f + DrawingHeight * 4 / 7.0f),
-                new PointF(RectMargin.Left + DrawingWidth + DrawingWidth * 3 / 4.0f, RectMargin.Top + DrawingHeight * 2.9f),
-                new PointF(RectMargin.Left + DrawingWidth + DrawingWidth / 4.0f, RectMargin.Top + DrawingHeight * 2.9f),
-                new PointF(RectMargin.Left + DrawingWidth, RectMargin.Top + DrawingHeight * (2.0f + 4 / 7.0f))
-            };
-            // 팔각형의 좌표
-            PointF[] OctagonPoints =
-            {
-                new PointF(RectMargin.Left + DrawingWidth * 2.0f + DrawingWidth / 3.0f, RectMargin.Top + DrawingHeight * 2.2f),
-                new PointF(RectMargin.Left + DrawingWidth * 2.0f + DrawingWidth * 2 / 3.0f, RectMargin.Top + DrawingHeight * 2.2f),
-                new PointF(RectMargin.Left + DrawingWidth * 2.8f, RectMargin.Top + DrawingHeight * 2.0f + DrawingHeight / 3.0f),
-                new PointF(RectMargin.Left + DrawingWidth * 2.8f, RectMargin.Top + DrawingHeight * 2.0f + DrawingHeight * 2 / 3.0f),
-                new PointF(RectMargin.Left + DrawingWidth * 2 + DrawingWidth * 2 / 3.0f, DrawingHeight * 3.07f),
-                new PointF(RectMargin.Left + DrawingWidth * 2 + DrawingWidth / 3.0f, DrawingHeight * 3.07f),
-                new PointF(RectMargin.Left + DrawingWidth * 2 + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeight * 2.0f + DrawingHeight * 2 / 3.0f),
-                new PointF(RectMargin.Left + DrawingWidth * 2 + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeight * 2.0f + DrawingHeight * 1/ 7.0f)
+            PointF[] PentagonPoints = CalculateVertices(5, DrawingWidth / 2.0f, 90.0f,
+                                        new PointF(RectMargin.Left + DrawingWidth / 2.0f,
+                                                    RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f));
 
-            };
+            // 육각형의 좌표
+            PointF[] HexagonPoints = CalculateVertices(6, DrawingWidth / 2.0f, 90.0f,
+                                        new PointF(RectMargin.Left + DrawingWidth + GapWidth + DrawingWidth / 2.0f,
+                                                    RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f));
+            
+            // 팔각형의 좌표
+            PointF[] OctagonPoints = CalculateVertices(8, DrawingWidth / 2.0f, 90.0f,
+                                        new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth / 2.0f,
+                                                    RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f));
 
             // 평행사변형의 좌표
             // 초승달을 그리는 사각형
@@ -180,6 +160,42 @@ namespace WinForm
 
 
             //**************************
+        }
+
+        /// <summary>
+        /// 중점으로 부터의 각도에 해당하는 좌표를 계산한다.(0도는 오른쪽에 있다.)
+        /// </summary>
+
+        private PointF DegreesToXY(float degrees, float radius, PointF origin)
+        {
+            PointF xy = new PointF();
+            double radians = degrees * Math.PI / 180.0;
+
+            xy.X = (float)Math.Cos(radians) * radius + origin.X;
+            xy.Y = (float)Math.Sin(-radians) * radius + origin.Y;
+
+            return xy;
+        }
+
+        /// <summary>
+        /// 중점으로 부터의 각도에 해당하는 좌표들을 계산한다.(0도는 오른쪽에 있다.)
+        /// </summary>
+        private PointF[] CalculateVertices(int sides, float radius, float startingAngle, PointF center)
+        {
+            if (sides < 3)
+                throw new ArgumentException("Polygon must have 3 sides or more.");
+
+            List<PointF> points = new List<PointF>();
+            float step = 360.0f / sides;
+
+            float angle = startingAngle; //starting angle
+            for (double i = startingAngle; i < startingAngle + 360.0; i += step) //go in a full circle
+            {
+                points.Add(DegreesToXY(angle, radius, center)); //code snippet from above
+                angle += step;
+            }
+
+            return points.ToArray();
         }
     }
 }
