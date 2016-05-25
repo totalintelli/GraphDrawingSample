@@ -46,7 +46,7 @@ namespace WinForm
             // 드로잉 너비의 3배
             float DrawingWidthTriple = DrawingWidth * 3.0f;
             // 드로잉 너비의 4배
-            float DrawingWidthQuard = DrawingWidth * 4.0f;
+            float DrawingWidthQuad = DrawingWidth * 4.0f;
             // 드로잉 너비의 5배
             float DrawingWidthFifth = DrawingWidth * 5.0f;
             // 드로잉 높이의 2배
@@ -73,17 +73,17 @@ namespace WinForm
                 new RectangleF(RectMargin.Left + DrawingWidth + GapWidth, RectMargin.Top, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble, RectMargin.Top, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple, RectMargin.Top, DrawingWidth, DrawingHeight),
-                new RectangleF(RectMargin.Left + DrawingWidthQuard + GapWidthQuad, RectMargin.Top, DrawingWidth, DrawingHeight),
+                new RectangleF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad, RectMargin.Top, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left + DrawingWidth + GapWidth, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth, DrawingHeight),
-                new RectangleF(RectMargin.Left + DrawingWidthQuard + GapWidthQuad, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth, DrawingHeight),
+                new RectangleF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left, RectMargin.Top + DrawingHeightDouble + GapHeightDouble, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left + DrawingWidth + GapWidth, RectMargin.Top + DrawingHeightDouble + GapHeightDouble, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble, RectMargin.Top + DrawingHeightDouble + GapHeightDouble, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple, RectMargin.Top + DrawingHeightDouble + GapHeightDouble, DrawingWidth, DrawingHeight),
-                new RectangleF(RectMargin.Left + DrawingWidthQuard + GapWidthQuad, RectMargin.Top + DrawingHeightDouble + GapHeightDouble, DrawingWidth, DrawingHeight),
+                new RectangleF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad, RectMargin.Top + DrawingHeightDouble + GapHeightDouble, DrawingWidth, DrawingHeight),
             };
             // 도형들의 색상
             SolidBrush FigureColor = new SolidBrush(Color.Purple);
@@ -91,9 +91,37 @@ namespace WinForm
             RectangleF CircleRect = new RectangleF(RectMargin.Left, RectMargin.Top, DrawingWidth, DrawingHeight);
             // 타원을 그리는 사각형
             RectangleF EllipseRect = new RectangleF(RectMargin.Left + DrawingWidth + GapWidth + DrawingWidth * 0.15f, RectMargin.Top, DrawingWidth * 0.7f, DrawingHeight);
-            // 계란을 그리는 사각형
-            // 네잎을 그리는 사각형
-            // 곡선으로 이루어진 삼각형을 그리는 사각형
+
+            // 계란의 좌표
+            PointF[] OvalPoints =
+                { new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f, RectMargin.Top),
+                  new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble, RectMargin.Top + DrawingHeight * 3 / 4.0f),
+                  new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f, RectMargin.Top + DrawingHeight),
+                  new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble, RectMargin.Top + DrawingHeight * 3 / 4.0f)
+                };
+
+            // 네 잎을 그리는 사각형
+            // 북쪽 잎을 그리는 사각형
+            RectangleF NorthLeafRect = new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple + DrawingWidth * 0.25f, 
+                                                        RectMargin.Top, DrawingWidth / 2.0f, DrawingHeight / 2.0f);
+            // 동쪽 잎을 그리는 사각형
+            RectangleF EastLeafRect = new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple + DrawingWidth / 2.0f,
+                                                        RectMargin.Top + DrawingHeight / 4.0f, DrawingWidth / 2.0f, DrawingHeight / 2.0f);
+            // 남쪽 잎을 그리는 사각형
+            RectangleF SouthLeafRect = new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple + DrawingWidth * 0.25f,
+                                                        RectMargin.Top + DrawingHeight / 2.0f, DrawingWidth / 2.0f, DrawingHeight / 2.0f);
+            // 서쪽 잎을 그리는 사각형
+            RectangleF WestLeafRect = new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple, RectMargin.Top + DrawingHeight / 4.0f,
+                                                        DrawingWidth / 2.0f, DrawingHeight / 2.0f);
+
+            // 곡선으로 이루어진 삼각형의 좌표
+            PointF[] CurvilinearTrianglePoints =
+                { new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.5f, RectMargin.Top),
+                  new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad, RectMargin.Top + DrawingHeight * 3 / 4.0f),
+                  new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.5f, RectMargin.Top + DrawingHeight),
+                  new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad, RectMargin.Top + DrawingHeight * 3 / 4.0f)
+                };
+
             // 사각형을 그리는 사각형
             RectangleF Rect = new RectangleF(RectMargin.Left, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth, DrawingHeight);
             // 직사각형을 그리는 사각형
@@ -132,8 +160,20 @@ namespace WinForm
             e.Graphics.FillEllipse(FigureColor, EllipseRect);
 
             // 계란을 그린다.
+            e.Graphics.FillClosedCurve(FigureColor, OvalPoints);
+
             // 네 잎을 그린다.
+            // 북쪽에 있는 잎을 그린다.
+            e.Graphics.FillEllipse(FigureColor, NorthLeafRect);
+            // 동쪽에 있는 잎을 그린다.
+            e.Graphics.FillEllipse(FigureColor, EastLeafRect);
+            // 남쪽에 있는 잎을 그린다.
+            e.Graphics.FillEllipse(FigureColor, SouthLeafRect);
+            // 서쪽에 있는 잎을 그린다.
+            e.Graphics.FillEllipse(FigureColor, WestLeafRect);
+
             // 곡선으로 이루어진 삼각형을 그린다.
+            e.Graphics.FillClosedCurve(FigureColor, CurvilinearTrianglePoints);
 
             // 사각형을 그린다.
             e.Graphics.FillRectangle(FigureColor, Rect);
@@ -166,13 +206,13 @@ namespace WinForm
         /// 중점으로 부터의 각도에 해당하는 좌표를 계산한다.(0도는 오른쪽에 있다.)
         /// </summary>
 
-        private PointF DegreesToXY(float degrees, float radius, PointF origin)
+        private PointF DegreesToXY(float Degrees, float Radius, PointF Origin)
         {
             PointF xy = new PointF();
-            double radians = degrees * Math.PI / 180.0;
+            double radians = Degrees * Math.PI / 180.0;
 
-            xy.X = (float)Math.Cos(radians) * radius + origin.X;
-            xy.Y = (float)Math.Sin(-radians) * radius + origin.Y;
+            xy.X = (float)Math.Cos(radians) * Radius + Origin.X;
+            xy.Y = (float)Math.Sin(-radians) * Radius + Origin.Y;
 
             return xy;
         }
@@ -180,18 +220,18 @@ namespace WinForm
         /// <summary>
         /// 중점으로 부터의 각도에 해당하는 좌표들을 계산한다.(0도는 오른쪽에 있다.)
         /// </summary>
-        private PointF[] CalculateVertices(int sides, float radius, float startingAngle, PointF center)
+        private PointF[] CalculateVertices(int Sides, float Radius, float startingAngle, PointF Center)
         {
-            if (sides < 3)
+            if (Sides < 3)
                 throw new ArgumentException("다각형의 변의 개수는 3개 이상이어야 합니다.");
 
             List<PointF> points = new List<PointF>();
-            float step = 360.0f / sides;
+            float step = 360.0f / Sides;
 
             float angle = startingAngle; //starting angle
             for (double i = startingAngle; i < startingAngle + 360.0; i += step) //go in a full circle
             {
-                points.Add(DegreesToXY(angle, radius, center)); //code snippet from above
+                points.Add(DegreesToXY(angle, Radius, Center)); //code snippet from above
                 angle += step;
             }
 
