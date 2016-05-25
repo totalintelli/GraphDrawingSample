@@ -183,7 +183,7 @@ namespace WinForm
         private PointF[] CalculateVertices(int sides, float radius, float startingAngle, PointF center)
         {
             if (sides < 3)
-                throw new ArgumentException("Polygon must have 3 sides or more.");
+                throw new ArgumentException("다각형의 변의 개수는 3개 이상이어야 합니다.");
 
             List<PointF> points = new List<PointF>();
             float step = 360.0f / sides;
