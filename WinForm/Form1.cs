@@ -122,8 +122,10 @@ namespace WinForm
                   new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad, RectMargin.Top + DrawingHeight * 3 / 4.0f)
                 };
 
-            // 사각형을 그리는 사각형
-            RectangleF Rect = new RectangleF(RectMargin.Left, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth, DrawingHeight);
+            // 정사각형을 그리는 사각형
+            PointF[] SquarePoints = CalculateVertices(4, DrawingWidth / 2.0f, 45.0f,
+                                                new PointF(RectMargin.Left + DrawingWidth / 2.0f,
+                                                    RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f));
             // 직사각형을 그리는 사각형
             RectangleF RectAngle = new RectangleF(RectMargin.Left + DrawingWidth + GapWidth + DrawingWidth * 0.15f, RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth * 0.7f, DrawingHeight);
             // 삼각형의 좌표
@@ -175,8 +177,8 @@ namespace WinForm
             // 곡선으로 이루어진 삼각형을 그린다.
             e.Graphics.FillClosedCurve(FigureColor, CurvilinearTrianglePoints);
 
-            // 사각형을 그린다.
-            e.Graphics.FillRectangle(FigureColor, Rect);
+            // 정사각형을 그린다.
+            e.Graphics.FillPolygon(FigureColor, SquarePoints);
 
             // 직사각형을 그린다.
             e.Graphics.FillRectangle(FigureColor, RectAngle);
