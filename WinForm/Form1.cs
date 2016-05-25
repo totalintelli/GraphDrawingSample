@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -133,7 +134,8 @@ namespace WinForm
                                         new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f, 
                                                     RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f));
             // 사다리꼴의 좌표
-            // 마름모를 그리는 사각형
+            // 마름모의 
+
             // 오각형의 좌표
             PointF[] PentagonPoints = CalculateVertices(5, DrawingWidth / 2.0f, 90.0f,
                                         new PointF(RectMargin.Left + DrawingWidth / 2.0f,
@@ -151,6 +153,20 @@ namespace WinForm
 
             // 평행사변형의 좌표
             // 초승달을 그리는 사각형
+            RectangleF CrescentRect = new RectangleF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.25f, 
+                                                     RectMargin.Top + DrawingHeightDouble + GapHeightDouble,
+                                                     DrawingWidth, DrawingHeight);
+            // 반원의 첫 번째 부분의 각도
+            float StartAngle = 90.0f; // 270.0f는 고정값임.
+            // 반원의 두 번재 부분의 각도
+            float SweepAngle = 180.0f; // 180.0f는 고정값임.
+            // 초승달 모양을 만들기 위한 GraphicsPath
+            GraphicsPath CrescentClipPath = new GraphicsPath();
+            CrescentClipPath.AddEllipse(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.4f, 
+                                        RectMargin.Top + DrawingHeightDouble + GapHeightDouble,
+                                        DrawingWidth, DrawingHeight);
+            // 그래픽 컨테이너에 초승달을 넣는다. 
+            GraphicsContainer ContainerState = e.Graphics.BeginContainer();
 
             // 드로잉 구역을 그린다.
             e.Graphics.DrawRectangles(Pens.Black, Rects);
@@ -162,7 +178,7 @@ namespace WinForm
             e.Graphics.FillEllipse(FigureColor, EllipseRect);
 
             // 계란을 그린다.
-            e.Graphics.FillClosedCurve(FigureColor, OvalPoints);
+            
 
             // 네 잎을 그린다.
             // 북쪽에 있는 잎을 그린다.
@@ -198,8 +214,15 @@ namespace WinForm
 
             // 평행사변형을 그린다.
             // 초승달을 그린다.
-
-
+            if (CrescentRect.Width > 0 && CrescentRect.Height > 0)
+            {
+                // 초승달 문양을 만든다.
+                e.Graphics.SetClip(CrescentClipPath, CombineMode.Exclude);
+                // 반원을 그린다.
+                e.Graphics.FillPie(FigureColor, CrescentRect.X, CrescentRect.Y, CrescentRect.Width, CrescentRect.Height, StartAngle, SweepAngle);
+                // 그래픽 컨테이너를 끝낸다.
+                e.Graphics.EndContainer(ContainerState);
+            }
 
             //**************************
         }
