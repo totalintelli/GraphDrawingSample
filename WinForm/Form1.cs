@@ -86,13 +86,13 @@ namespace WinForm
                 new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple, RectMargin.Top + DrawingHeightDouble + GapHeightDouble, DrawingWidth, DrawingHeight),
                 new RectangleF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad, RectMargin.Top + DrawingHeightDouble + GapHeightDouble, DrawingWidth, DrawingHeight),
             };
+
             // 도형들의 색상
             SolidBrush FigureColor = new SolidBrush(Color.Purple);
             // 원을 그리는 사각형
             RectangleF CircleRect = new RectangleF(RectMargin.Left, RectMargin.Top, DrawingWidth, DrawingHeight);
             // 타원을 그리는 사각형
             RectangleF EllipseRect = new RectangleF(RectMargin.Left + DrawingWidth + GapWidth + DrawingWidth * 0.15f, RectMargin.Top, DrawingWidth * 0.7f, DrawingHeight);
-
             // 계란의 좌표
             PointF[] OvalPoints =
                 { new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.3f, RectMargin.Top + DrawingHeight * 0.1f),
@@ -101,7 +101,6 @@ namespace WinForm
                   new PointF(RectMargin.Left + DrawingWidthTriple + GapWidthDouble - DrawingWidth * 0.1f, RectMargin.Top + DrawingHeight * 3 / 4.0f),
                   new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.7f, RectMargin.Top + DrawingHeight * 0.1f)
                 };
-
             // 네 잎을 그리는 사각형
             // 북쪽 잎을 그리는 사각형
             RectangleF NorthLeafRect = new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple + DrawingWidth * 0.25f, 
@@ -115,7 +114,6 @@ namespace WinForm
             // 서쪽 잎을 그리는 사각형
             RectangleF WestLeafRect = new RectangleF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple, RectMargin.Top + DrawingHeight / 4.0f,
                                                         DrawingWidth / 2.0f, DrawingHeight / 2.0f);
-
             // 곡선으로 이루어진 삼각형의 좌표
             PointF[] CurvilinearTrianglePoints =
                 { new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.5f, RectMargin.Top),
@@ -135,26 +133,33 @@ namespace WinForm
                                         new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f, 
                                                     RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f));
             // 사다리꼴의 좌표
-            // 마름모의 
-            PointF RhombusPoints =
+            PointF[] TrapezoidPoints =
             {
-
-            }
+              new PointF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeight + GapHeight),
+              new PointF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple + DrawingWidth * 0.8f, RectMargin.Top + DrawingHeight + GapHeight),
+              new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthTriple, RectMargin.Top + DrawingHeightDouble + GapHeight),
+              new PointF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple, RectMargin.Top + DrawingHeightDouble + GapHeight)
+            };
+            // 마름모의 좌표
+            PointF[] RhombusPoints =
+            {
+                new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.5f, RectMargin.Top + DrawingHeight + GapHeight),
+                new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.8f, RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f),
+                new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.5f, RectMargin.Top + DrawingHeightDouble + GapHeight),
+                new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f)
+            };
             // 오각형의 좌표
             PointF[] PentagonPoints = CalculateVertices(5, DrawingWidth / 2.0f, 90.0f,
                                         new PointF(RectMargin.Left + DrawingWidth / 2.0f,
                                                     RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f));
-
             // 육각형의 좌표
             PointF[] HexagonPoints = CalculateVertices(6, DrawingWidth / 2.0f, 90.0f,
                                         new PointF(RectMargin.Left + DrawingWidth + GapWidth + DrawingWidth / 2.0f,
                                                     RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f));
-            
             // 팔각형의 좌표
             PointF[] OctagonPoints = CalculateVertices(8, DrawingWidth / 2.0f, 90.0f,
                                         new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth / 2.0f,
                                                     RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f));
-
             // 평행사변형의 좌표
             // 초승달을 그리는 사각형
             RectangleF CrescentRect = new RectangleF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.25f, 
@@ -206,7 +211,16 @@ namespace WinForm
             e.Graphics.FillPolygon(FigureColor, TrianglePoints);
 
             // 사다리꼴을 그린다.
+            e.Graphics.FillRegion(FigureColor,
+                                    new Region(new GraphicsPath(TrapezoidPoints,
+                                                new byte[] { (byte)PathPointType.Start, (byte)PathPointType.Line,
+                                                             (byte)PathPointType.Line, (byte) PathPointType.Line})));
+
             // 마름모를 그린다.
+            e.Graphics.FillRegion(FigureColor, 
+                                    new Region(new GraphicsPath(RhombusPoints, 
+                                                new byte[] { (byte)PathPointType.Start, (byte)PathPointType.Line,
+                                                             (byte)PathPointType.Line, (byte) PathPointType.Line})));
             // 오각형을 그린다.
             e.Graphics.FillPolygon(FigureColor, PentagonPoints);
 
