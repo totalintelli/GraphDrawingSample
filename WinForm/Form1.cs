@@ -136,7 +136,10 @@ namespace WinForm
                                                     RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f));
             // 사다리꼴의 좌표
             // 마름모의 
+            PointF RhombusPoints =
+            {
 
+            }
             // 오각형의 좌표
             PointF[] PentagonPoints = CalculateVertices(5, DrawingWidth / 2.0f, 90.0f,
                                         new PointF(RectMargin.Left + DrawingWidth / 2.0f,
@@ -228,6 +231,7 @@ namespace WinForm
             //**************************
         }
 
+        # region 정다각형의 좌표를 구하기
         /// <summary>
         /// 중점으로 부터의 각도에 해당하는 좌표를 계산한다.(0도는 오른쪽에 있다.)
         /// </summary>
@@ -263,5 +267,6 @@ namespace WinForm
 
             return points.ToArray();
         }
+        #endregion
     }
 }
