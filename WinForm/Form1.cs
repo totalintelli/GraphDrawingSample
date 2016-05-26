@@ -231,90 +231,229 @@ namespace WinForm
             RectangleF CrescentRect = new RectangleF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.25f, // 초승달을 감싸는 사각형의 X좌표. 0.25는 초승달을 감싸는 사각형의 X좌표를 나타내기 위한 값으로 고정값.
                                                      RectMargin.Top + DrawingHeightDouble + GapHeightDouble,                   // 초승달을 감싸는 사각형의 Y좌표.
                                                      DrawingWidth, DrawingHeight);                                             // 초승달을 감싸는 사각형의 너비와 높이.
-            // 반원의 첫 번째 부분의 각도
-            float StartAngle = 90.0f; // 90.0f는 고정값임.
-            // 반원의 두 번재 부분의 각도
-            float SweepAngle = 180.0f; // 180.0f는 고정값임.
-            // 초승달 모양을 만들기 위한 GraphicsPath
-            GraphicsPath CrescentClipPath = new GraphicsPath();
-            CrescentClipPath.AddEllipse(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.4f,        // 초승달 모양을 만드는 음각 틀의 X좌표. 0.4f는 초승달 모양을 만드는 음각 틀의 X좌표를 나타내기 위한 값으로 고정값.
-                                        RectMargin.Top + DrawingHeightDouble + GapHeightDouble - DrawingHeight * 0.06f, // 초승달 모양을 만드는 음각 틀의 Y좌표. 0.06f는 초승달 모양을 만드는 음각 틀의 Y좌표를 나타내기 위한 값으로 고정값.               
-                                        DrawingWidth * 1.3f, DrawingHeight * 1.15f);                                    // 초승달 모양을 만드는 음각틀의 너비와 높이. 1.3f는 초승달 모양을 만드는 음각 틀의 너비의 비율이고 1.1f는 초승달 모양을 만드는 음각 틀의 높이의 비율로 고정값.
-            // 그래픽 컨테이너에 초승달을 넣는다. 
-            GraphicsContainer ContainerState = e.Graphics.BeginContainer();
+            
 
-            if(Width > 0 && Height > 0)
+            // 원을 그린다.
+            DrawFigureInRect(e.Graphics, CircleRect, FigureFlag.Circle, FigureColor);
+
+            // 타원을 그린다.
+            DrawFigureInRect(e.Graphics, EllipseRect, FigureFlag.Ellipse, FigureColor);
+
+            // 계란을 그린다.
+            DrawFigureWithPoint(e.Graphics, OvalPoints, FigureFlag.Oval, FigureColor);
+
+            // 네 잎을 그린다.
+            // 북쪽에 있는 잎을 그린다.
+            DrawFigureInRect(e.Graphics, NorthLeafRect, FigureFlag.Quartrefoil, FigureColor);
+            // 동쪽에 있는 잎을 그린다.
+            DrawFigureInRect(e.Graphics, EastLeafRect, FigureFlag.Quartrefoil, FigureColor);
+            // 남쪽에 있는 잎을 그린다.
+            DrawFigureInRect(e.Graphics, SouthLeafRect, FigureFlag.Quartrefoil, FigureColor);
+            // 서쪽에 있는 잎을 그린다.
+            DrawFigureInRect(e.Graphics, WestLeafRect, FigureFlag.Quartrefoil, FigureColor);
+
+            // 곡선으로 이루어진 삼각형을 그린다.
+            DrawFigureWithPoint(e.Graphics, CurvilinearTrianglePoints, FigureFlag.CurvilinearTriangle, FigureColor);
+
+            // 정사각형을 그린다.
+            DrawFigureWithPoint(e.Graphics, SquarePoints, FigureFlag.Square, FigureColor);
+
+            // 직사각형을 그린다.
+            DrawFigureInRect(e.Graphics, RectAngle, FigureFlag.Rectangle, FigureColor);
+
+            // 삼각형을 그린다.
+            DrawFigureWithPoint(e.Graphics, TrianglePoints, FigureFlag.Triangle, FigureColor);
+
+            // 사다리꼴을 그린다.
+            DrawFigureWithPoint(e.Graphics, TrapezoidPoints, FigureFlag.Trapezoid, FigureColor);
+
+            // 마름모를 그린다.
+            DrawFigureWithPoint(e.Graphics, RhombusPoints, FigureFlag.Rhombus, FigureColor);
+
+            // 오각형을 그린다.
+            DrawFigureWithPoint(e.Graphics, PentagonPoints, FigureFlag.Pentagon, FigureColor);
+
+            // 육각형을 그린다.
+            DrawFigureWithPoint(e.Graphics, HexagonPoints, FigureFlag.Hexagon, FigureColor);
+
+            // 팔각형을 그린다.
+            DrawFigureWithPoint(e.Graphics, OctagonPoints, FigureFlag.Octagon, FigureColor);
+
+            // 평행사변형을 그린다.
+            DrawFigureWithPoint(e.Graphics, ParallelogramPoints, FigureFlag.Paralelogram, FigureColor);
+
+            // 초승달을 그린다.
+            DrawFigureInRect(e.Graphics, CrescentRect, FigureFlag.Crescent, FigureColor);
+        }
+
+        // 사각형 안에 도형을 그리는 함수
+        private void DrawFigureInRect(Graphics gr, RectangleF DrawRect, FigureFlag Result, SolidBrush FigureColor)
+        {
+            // 실제 타입에 따른 그래프 그리는 구역
+            bool isDrwaing = true;
+
+            // 1. 유효성 검사 = NULL인 경우 체크
+            if (gr == null && DrawRect == null)
+                isDrwaing = false;
+            // 2. 유효성 검사 = 높이 또는 너비값이 0 보다 작은 경우
+            else if (DrawRect.Width <= 0 && DrawRect.Height <= 0)
+                isDrwaing = false;
+
+            // 실제 타입에 따른 그래프 그리는 구역
+            if (isDrwaing && DrawRect.Width > 0 && DrawRect.Height > 0)
             {
-                // 원을 그린다.
-                e.Graphics.FillEllipse(FigureColor, CircleRect);
-
-                // 타원을 그린다.
-                e.Graphics.FillEllipse(FigureColor, EllipseRect);
-
-                // 계란을 그린다.
-                e.Graphics.FillClosedCurve(FigureColor, OvalPoints);
-
-                // 네 잎을 그린다.
-                // 북쪽에 있는 잎을 그린다.
-                e.Graphics.FillEllipse(FigureColor, NorthLeafRect);
-                // 동쪽에 있는 잎을 그린다.
-                e.Graphics.FillEllipse(FigureColor, EastLeafRect);
-                // 남쪽에 있는 잎을 그린다.
-                e.Graphics.FillEllipse(FigureColor, SouthLeafRect);
-                // 서쪽에 있는 잎을 그린다.
-                e.Graphics.FillEllipse(FigureColor, WestLeafRect);
-
-                // 곡선으로 이루어진 삼각형을 그린다.
-                e.Graphics.FillClosedCurve(FigureColor, CurvilinearTrianglePoints);
-
-                // 정사각형을 그린다.
-                e.Graphics.FillPolygon(FigureColor, SquarePoints);
-
-                // 직사각형을 그린다.
-                e.Graphics.FillRectangle(FigureColor, RectAngle);
-                // 삼각형을 그린다.
-                e.Graphics.FillPolygon(FigureColor, TrianglePoints);
-
-                // 사다리꼴을 그린다.
-                e.Graphics.FillRegion(FigureColor,
-                                        new Region(new GraphicsPath(TrapezoidPoints,
-                                                    new byte[] { (byte)PathPointType.Start, (byte)PathPointType.Line,
-                                                                 (byte)PathPointType.Line, (byte) PathPointType.Line})));
-
-                // 마름모를 그린다.
-                e.Graphics.FillRegion(FigureColor, 
-                                        new Region(new GraphicsPath(RhombusPoints, 
-                                                    new byte[] { (byte)PathPointType.Start, (byte)PathPointType.Line,
-                                                                 (byte)PathPointType.Line, (byte) PathPointType.Line})));
-                // 오각형을 그린다.
-                e.Graphics.FillPolygon(FigureColor, PentagonPoints);
-
-                // 육각형을 그린다.
-                e.Graphics.FillPolygon(FigureColor, HexagonPoints);
-
-                // 팔각형을 그린다.
-                e.Graphics.FillPolygon(FigureColor, OctagonPoints);
-
-                // 평행사변형을 그린다.
-                e.Graphics.FillRegion(FigureColor,
-                                        new Region(new GraphicsPath(ParallelogramPoints,
-                                                    new byte[] { (byte)PathPointType.Start, (byte)PathPointType.Line,
-                                                                 (byte)PathPointType.Line, (byte) PathPointType.Line})));
-
-                // 초승달을 그린다.
-                if (CrescentRect.Width > 0 && CrescentRect.Height > 0)
+                switch (Result)
                 {
-                    // 초승달 문양을 만든다.
-                    e.Graphics.SetClip(CrescentClipPath, CombineMode.Exclude);
-                    // 반원을 그린다.
-                    e.Graphics.FillPie(FigureColor, CrescentRect.X, CrescentRect.Y, CrescentRect.Width, CrescentRect.Height, StartAngle, SweepAngle);
-                    // 그래픽 컨테이너를 끝낸다.
-                    e.Graphics.EndContainer(ContainerState);
+                    case FigureFlag.Circle:
+                        // 원을 그린다.
+                        gr.FillEllipse(FigureColor, DrawRect);
+                        break;
+                    case FigureFlag.Ellipse:
+                        // 타원을 그린다.
+                        gr.FillEllipse(FigureColor, DrawRect);
+                        break;
+                    case FigureFlag.Quartrefoil:
+                        // 네 잎을 그린다.
+                        // 북쪽에 있는 잎을 그린다.
+                        gr.FillEllipse(FigureColor, DrawRect);
+                        // 동쪽에 있는 잎을 그린다.
+                        gr.FillEllipse(FigureColor, DrawRect);
+                        // 남쪽에 있는 잎을 그린다.
+                        gr.FillEllipse(FigureColor, DrawRect);
+                        // 서쪽에 있는 잎을 그린다.
+                        gr.FillEllipse(FigureColor, DrawRect);
+                        break;
+                    case FigureFlag.Rectangle:
+                        // 직사각형을 그린다.
+                        gr.FillRectangle(FigureColor, DrawRect);
+                        break;
+                    case FigureFlag.Crescent:
+                        // 마진
+                        Padding RectMargin = new System.Windows.Forms.Padding(30, 30, 30, 30);
+                        // 드로잉 너비
+                        float DrawingWidth = (panel1.ClientRectangle.Width - (RectMargin.Right + RectMargin.Left)) / 5.4f;   // 5.4f는 드로잉의 너비의 비율로 고정값.
+                        // 드로잉 너비의 4배
+                        float DrawingWidthQuad = DrawingWidth * 4.0f;
+                        // 드로잉 구역의 간격의 너비
+                        float GapWidth = DrawingWidth * 0.1f;
+                        // 드로잉 구역의 간격의 너비의 4배
+                        float GapWidthQuad = GapWidth * 4.0f;
+                        // 드로잉 높이
+                        float DrawingHeight = (panel1.ClientRectangle.Height - (RectMargin.Top + RectMargin.Bottom)) / 3.2f; // 3.2f는 드로잉의 너비의 비율로 고정값.
+                        // 드로잉 높이의 2배                                                                                                     // 드로잉 높이의 2배
+                        float DrawingHeightDouble = DrawingHeight * 2.0f;
+                        // 드로잉 구역의 간격의 높이
+                        float GapHeight = DrawingHeight * 0.1f;
+                        // 드로잉 구역의 간격의 높이의 2배
+                        float GapHeightDouble = GapHeight * 2.0f;
+                        // 반원의 첫 번째 부분의 각도
+                        float StartAngle = 90.0f; // 90.0f는 고정값임.
+                                                  // 반원의 두 번재 부분의 각도
+                        float SweepAngle = 180.0f; // 180.0f는 고정값임.
+                                                   // 초승달 모양을 만들기 위한 GraphicsPath
+                        GraphicsPath CrescentClipPath = new GraphicsPath();
+                        // 초승달로 만들기 위한 음각 원을 둘러싼 사각형
+                        RectangleF IntaglioRect = new RectangleF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.4f, // 초승달 모양을 만드는 음각 틀의 X좌표. 0.4f는 초승달 모양을 만드는 음각 틀의 X좌표를 나타내기 위한 값으로 고정값.
+                                                    RectMargin.Top + DrawingHeightDouble + GapHeightDouble - DrawingHeight * 0.06f,       // 초승달 모양을 만드는 음각 틀의 Y좌표. 0.06f는 초승달 모양을 만드는 음각 틀의 Y좌표를 나타내기 위한 값으로 고정값.               
+                                                    DrawingWidth * 1.3f, DrawingHeight * 1.15f);                                          // 초승달 모양을 만드는 음각틀의 너비와 높이. 1.3f는 초승달 모양을 만드는 음각 틀의 너비의 비율이고 1.1f는 초승달 모양을 만드는 음각 틀의 높이의 비율로 고정값.
+                        CrescentClipPath.AddEllipse(IntaglioRect);
+                                                                                                                                    
+                        GraphicsContainer ContainerState = gr.BeginContainer();  // 그래픽 컨테이너에 초승달을 넣는다. 
+                        // 초승달을 그린다.
+                        if (DrawRect.Width > 0 && DrawRect.Height > 0)
+                        {
+                            // 초승달 문양을 만든다.
+                            gr.SetClip(CrescentClipPath, CombineMode.Exclude);
+                            // 반원을 그린다.
+                            gr.FillPie(FigureColor, DrawRect.X, DrawRect.Y, DrawRect.Width, DrawRect.Height, StartAngle, SweepAngle);
+                            // 그래픽 컨테이너를 끝낸다.
+                            gr.EndContainer(ContainerState);
+                        }
+                        break;
+                    default:
+                        break;
                 }
+            }
+        }
 
+        // 점으로 도형을 그리는 함수
+        private void DrawFigureWithPoint(Graphics gr, PointF[] DrawPoints, FigureFlag Result, SolidBrush FigureColor)
+        {
+            // 실제 타입에 따른 그래프 그리는 구역
+            bool isDrwaing = true;
+
+            // 1. 유효성 검사 = NULL인 경우 체크
+            if (gr == null && DrawPoints == null)
+                isDrwaing = false;
+            // 2. 유효성 검사 = X 또는 Y 값이 0 보다 작은 경우
+            else
+            {
+                for(int i = 0; i < DrawPoints.Length; i++)
+                {
+                    if(DrawPoints[i].X <= 0 || DrawPoints[i].Y <= 0)
+                    {
+                        isDrwaing = false;
+                    }
+                }
+                
             }
 
-            //**************************
+            // 실제 타입에 따른 그래프 그리는 구역
+            if (isDrwaing)
+            {
+                switch (Result)
+                {
+                    case FigureFlag.Oval:
+                        // 계란을 그린다.
+                        gr.FillClosedCurve(FigureColor, DrawPoints);
+                        break;
+                    case FigureFlag.CurvilinearTriangle:
+                        // 곡선으로 이루어진 삼각형을 그린다.
+                        gr.FillClosedCurve(FigureColor, DrawPoints);
+                        break;
+                    case FigureFlag.Square:
+                        // 정사각형을 그린다.
+                        gr.FillPolygon(FigureColor, DrawPoints);
+                        break;
+                    case FigureFlag.Triangle:
+                        // 삼각형을 그린다.
+                        gr.FillPolygon(FigureColor, DrawPoints);
+                        break;
+                    case FigureFlag.Trapezoid:
+                        // 사다리꼴을 그린다.
+                        gr.FillRegion(FigureColor, new Region(new GraphicsPath(DrawPoints,
+                                                              new byte[] { (byte)PathPointType.Start, (byte)PathPointType.Line,
+                                                                 (byte)PathPointType.Line, (byte) PathPointType.Line})));
+                        break;
+                    case FigureFlag.Rhombus:
+                        // 마름모를 그린다.
+                        gr.FillRegion(FigureColor,
+                                                new Region(new GraphicsPath(DrawPoints,
+                                                            new byte[] { (byte)PathPointType.Start, (byte)PathPointType.Line,
+                                                                 (byte)PathPointType.Line, (byte) PathPointType.Line})));
+                        break;
+                    case FigureFlag.Pentagon:
+                        // 오각형을 그린다.
+                        gr.FillPolygon(FigureColor, DrawPoints);
+                        break;
+                    case FigureFlag.Hexagon:
+                        // 육각형을 그린다.
+                        gr.FillPolygon(FigureColor, DrawPoints);
+                        break;
+                    case FigureFlag.Octagon:
+                        // 팔각형을 그린다.
+                        gr.FillPolygon(FigureColor, DrawPoints);
+                        break;
+                    case FigureFlag.Paralelogram:
+                        // 평행사변형을 그린다.
+                        gr.FillRegion(FigureColor,new Region(new GraphicsPath(DrawPoints,
+                                                             new byte[] { (byte)PathPointType.Start, (byte)PathPointType.Line,
+                                                                 (byte)PathPointType.Line, (byte) PathPointType.Line})));
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         # region 정다각형의 좌표를 구하기
