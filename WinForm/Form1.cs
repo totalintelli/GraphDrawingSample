@@ -95,10 +95,11 @@ namespace WinForm
 
             // 계란의 좌표
             PointF[] OvalPoints =
-                { new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f, RectMargin.Top),
-                  new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble, RectMargin.Top + DrawingHeight * 3 / 4.0f),
+                { new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.3f, RectMargin.Top + DrawingHeight * 0.1f),
+                  new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.1f, RectMargin.Top + DrawingHeight * 3 / 4.0f),
                   new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f, RectMargin.Top + DrawingHeight),
-                  new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble, RectMargin.Top + DrawingHeight * 3 / 4.0f)
+                  new PointF(RectMargin.Left + DrawingWidthTriple + GapWidthDouble - DrawingWidth * 0.1f, RectMargin.Top + DrawingHeight * 3 / 4.0f),
+                  new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.7f, RectMargin.Top + DrawingHeight * 0.1f)
                 };
 
             // 네 잎을 그리는 사각형
@@ -120,7 +121,7 @@ namespace WinForm
                 { new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.5f, RectMargin.Top),
                   new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad, RectMargin.Top + DrawingHeight * 3 / 4.0f),
                   new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.5f, RectMargin.Top + DrawingHeight),
-                  new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad, RectMargin.Top + DrawingHeight * 3 / 4.0f)
+                  new PointF(RectMargin.Left + DrawingWidthFifth + GapWidthQuad, RectMargin.Top + DrawingHeight * 3 / 4.0f)
                 };
 
             // 정사각형을 그리는 사각형
@@ -178,7 +179,7 @@ namespace WinForm
             e.Graphics.FillEllipse(FigureColor, EllipseRect);
 
             // 계란을 그린다.
-            
+            e.Graphics.FillClosedCurve(FigureColor, OvalPoints);
 
             // 네 잎을 그린다.
             // 북쪽에 있는 잎을 그린다.
@@ -191,7 +192,7 @@ namespace WinForm
             e.Graphics.FillEllipse(FigureColor, WestLeafRect);
 
             // 곡선으로 이루어진 삼각형을 그린다.
-            e.Graphics.FillPolygon(FigureColor, CurvilinearTrianglePoints);
+            e.Graphics.FillClosedCurve(FigureColor, CurvilinearTrianglePoints);
 
             // 정사각형을 그린다.
             e.Graphics.FillPolygon(FigureColor, SquarePoints);
