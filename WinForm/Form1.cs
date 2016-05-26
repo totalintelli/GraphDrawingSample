@@ -161,6 +161,13 @@ namespace WinForm
                                         new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth / 2.0f,
                                                     RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f));
             // 평행사변형의 좌표
+            PointF[] ParallelogramPoints =
+            {
+                new PointF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeightDouble + GapHeightDouble),
+                new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthTriple, RectMargin.Top + DrawingHeightDouble + GapHeightDouble),
+                new PointF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple + DrawingWidth * 0.8f, RectMargin.Top + DrawingHeightTriple + GapHeightDouble),
+                new PointF(RectMargin.Left + DrawingWidthTriple + GapWidthTriple, RectMargin.Top + DrawingHeightTriple + GapHeightDouble),
+            };
             // 초승달을 그리는 사각형
             RectangleF CrescentRect = new RectangleF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.25f, 
                                                      RectMargin.Top + DrawingHeightDouble + GapHeightDouble,
@@ -231,6 +238,11 @@ namespace WinForm
             e.Graphics.FillPolygon(FigureColor, OctagonPoints);
 
             // 평행사변형을 그린다.
+            e.Graphics.FillRegion(FigureColor,
+                                    new Region(new GraphicsPath(ParallelogramPoints,
+                                                new byte[] { (byte)PathPointType.Start, (byte)PathPointType.Line,
+                                                             (byte)PathPointType.Line, (byte) PathPointType.Line})));
+
             // 초승달을 그린다.
             if (CrescentRect.Width > 0 && CrescentRect.Height > 0)
             {
