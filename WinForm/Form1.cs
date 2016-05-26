@@ -163,8 +163,8 @@ namespace WinForm
             // 초승달 모양을 만들기 위한 GraphicsPath
             GraphicsPath CrescentClipPath = new GraphicsPath();
             CrescentClipPath.AddEllipse(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.4f, 
-                                        RectMargin.Top + DrawingHeightDouble + GapHeightDouble,
-                                        DrawingWidth, DrawingHeight);
+                                        RectMargin.Top + DrawingHeightDouble + GapHeightDouble - DrawingHeight * 0.06f,
+                                        DrawingWidth * 1.3f, DrawingHeight * 1.15f);
             // 그래픽 컨테이너에 초승달을 넣는다. 
             GraphicsContainer ContainerState = e.Graphics.BeginContainer();
 
@@ -191,7 +191,7 @@ namespace WinForm
             e.Graphics.FillEllipse(FigureColor, WestLeafRect);
 
             // 곡선으로 이루어진 삼각형을 그린다.
-            e.Graphics.FillClosedCurve(FigureColor, CurvilinearTrianglePoints);
+            e.Graphics.FillPolygon(FigureColor, CurvilinearTrianglePoints);
 
             // 정사각형을 그린다.
             e.Graphics.FillPolygon(FigureColor, SquarePoints);
