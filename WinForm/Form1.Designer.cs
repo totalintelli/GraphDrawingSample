@@ -47,7 +47,7 @@
             this.ClientSize = new System.Drawing.Size(847, 643);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "도형 그리기";
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.ResumeLayout(false);
 
