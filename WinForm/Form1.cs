@@ -12,13 +12,91 @@ namespace WinForm
 {
     public partial class Form1 : Form
     {
+        // 도형 타입
+        public enum FigureFlag
+        {
+            /// <summary>
+            /// 원
+            /// </summary>
+            Circle = 1,
+
+            /// <summary>
+            /// 타원
+            /// </summary>
+            Ellipse = 2,
+
+            /// <summary>
+            /// 계란형
+            /// </summary>
+            Oval = 3,
+
+            /// <summary>
+            /// 네 잎
+            /// </summary>
+            Quartrefoil = 4,
+
+            /// <summary>
+            /// 둥근 모서리 삼각형
+            /// </summary>
+            CurvilinearTriangle = 5,
+
+            /// <summary>
+            /// 사각형
+            /// </summary>
+            Square = 6,
+
+            /// <summary>
+            /// 직사각형
+            /// </summary>
+            Rectangle = 7,
+
+            /// <summary>
+            /// 삼각형
+            /// </summary>
+            Triangle = 8,
+
+            /// <summary>
+            /// 사다리꼴
+            /// </summary>
+            Trapezoid = 9,
+
+            /// <summary>
+            /// 마름모
+            /// </summary>
+            Rhombus = 10,
+
+            /// <summary>
+            /// 오각형
+            /// </summary>
+            Pentagon = 11,
+
+            /// <summary>
+            /// 육각형
+            /// </summary>
+            Hexagon = 12,
+
+            /// <summary>
+            /// 팔각형
+            /// </summary>
+            Octagon = 13,
+
+            /// <summary>
+            /// 평행사변형
+            /// </summary>
+            Paralelogram = 14,
+
+            /// <summary>
+            /// 초승달
+            /// </summary>
+            Crescent = 15
+        }
         public Form1()
         {
             InitializeComponent();
 
             this.StartPosition = FormStartPosition.CenterScreen;
             this.WindowState = FormWindowState.Normal;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Width = 800;
             this.Height = 600;
             this.Text = "WinForm";
