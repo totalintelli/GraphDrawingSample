@@ -180,17 +180,10 @@ namespace WinForm
                   new PointF(RectMargin.Left + DrawingWidthFifth + GapWidthQuad, RectMargin.Top + DrawingHeight * 3 / 4.0f)                           // 곡선으로 이루어진 삼각형의 중간 부분의 오른쪽. 3 / 4.0f는 곡선으로 이루어진 삼각형의 중간 부분의 위치를 나타내기 위한 값으로 고정값.
                 };
 
-            // 정사각형을 그리는 사각형
-            PointF[] SquarePoints = CalculateVertices(4, DrawingWidth / 2.0f, 45.0f,                                                                  // 4: 변의 개수, DrawingWidth / 2.0f : 도형을 감싸는 원의 지름, 45.0f : 점을 찍기 시작하는 각도
-                                                new PointF(RectMargin.Left + DrawingWidth * 0.5f,                                                     // 도형을 감싸는 원의 X좌표. 0.5f는 도형을 감싸는 원의 X좌표를 나타내기 위한 값으로 고정값.
-                                                    RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f));                              // 도형을 감싸는 원의 Y좌표. 0.5f는 도형을 감싸는 원의 Y좌표를 나타내기 위한 값으로 고정값.
             // 직사각형을 그리는 사각형
             RectangleF RectAngle = new RectangleF(RectMargin.Left + DrawingWidth + GapWidth + DrawingWidth * 0.15f,                                   // 0.15f는 직사각형의 X좌표를 구하기 위한 값으로 고정값.
                                                   RectMargin.Top + DrawingHeight + GapHeight, DrawingWidth * 0.7f, DrawingHeight);                    // 0.7f는 직사각형의 Y좌표를 구하기 위한 값으로 고정값.
-            // 삼각형의 좌표
-            PointF[] TrianglePoints = CalculateVertices(3, DrawingWidth / 2.0f, 90.0f,                                                                // 3: 변의 개수, DrawingWidth / 2.0f : 도형을 감싸는 원의 지름, 90.0f : 점을 찍기 시작하는 각도
-                                        new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f,                       // 도형을 감싸는 원의 X좌표. 0.5f는 도형을 감싸는 원의 X좌표를 나타내기 위한 값으로 고정값.
-                                                    RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f));                              // 도형을 감싸는 원의 Y좌표. 0.5f는 도형을 감싸는 원의 Y좌표를 나타내기 위한 값으로 고정값.
+            
             // 사다리꼴의 좌표
             PointF[] TrapezoidPoints =
             {
@@ -207,18 +200,39 @@ namespace WinForm
                 new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.5f, RectMargin.Top + DrawingHeightDouble + GapHeight),                  // 마름모의 아래에 있는 꼭지점. 0.5f는 마름모의 아래에 있는 꼭지점의 위치를 정하기 위한 값으로 고정값.
                 new PointF(RectMargin.Left + DrawingWidthQuad + GapWidthQuad + DrawingWidth * 0.2f, RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f)  // 마름모의 중간의 왼쪽에 있는 꼭지점. 마름모의 0.2f, 0.f5는 마름모의 중간의 왼쪽에 있는 꼭지점의 위치를 정하기 위한 값으로 고정값.
             };
+            // 정다각형을 둘러싸는 원의 지름
+            float Radius = 0.0f;
+            if (DrawingWidth < DrawingHeight)
+            {
+                // 원의 지름을 구한다.
+                Radius = DrawingWidth / 2.0f;  // DrawingWidth / 2.0f : 도형을 감싸는 원의 지름
+            }
+            else
+            {
+                // 원의 지름을 구한다.
+                Radius = DrawingHeight / 2.0f; // DrawingWidth / 2.0f : 도형을 감싸는 원의 지름
+            }
+            // 정사각형을 그리는 사각형
+            PointF[] SquarePoints = CalculateVertices(4, Radius, 45.0f,                                                              // 4: 변의 개수, 45.0f : 점을 찍기 시작하는 각도
+                                                new PointF(RectMargin.Left + DrawingWidth * 0.5f,                                    // 도형을 감싸는 원의 X좌표. 0.5f는 도형을 감싸는 원의 X좌표를 나타내기 위한 값으로 고정값.
+                                                    RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f));             // 도형을 감싸는 원의 Y좌표. 0.5f는 도형을 감싸는 원의 Y좌표를 나타내기 위한 값으로 고정값.
+            // 삼각형의 좌표
+            PointF[] TrianglePoints = CalculateVertices(3, Radius, 90.0f,                                                            // 3: 변의 개수, 90.0f : 점을 찍기 시작하는 각도
+                                        new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f,      // 도형을 감싸는 원의 X좌표. 0.5f는 도형을 감싸는 원의 X좌표를 나타내기 위한 값으로 고정값.
+                                                    RectMargin.Top + DrawingHeight + GapHeight + DrawingHeight * 0.5f));             // 도형을 감싸는 원의 Y좌표. 0.5f는 도형을 감싸는 원의 Y좌표를 나타내기 위한 값으로 고정값.
             // 오각형의 좌표
-            PointF[] PentagonPoints = CalculateVertices(5, DrawingWidth / 2.0f, 90.0f,                                               // 5: 변의 개수, DrawingWidth / 2.0f : 도형을 감싸는 원의 지름, 90.0f : 점을 찍기 시작하는 각도
+            PointF[] PentagonPoints = CalculateVertices(5, Radius, 90.0f,                                                            // 5: 변의 개수, 90.0f : 점을 찍기 시작하는 각도
                                         new PointF(RectMargin.Left + DrawingWidth * 0.5f,                                            // 도형을 감싸는 원의 X좌표. 0.5f는 도형을 감싸는 원의 X좌표를 나타내기 위한 값으로 고정값.
                                                     RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f)); // 도형을 감싸는 원의 Y좌표. 0.5f는 도형을 감싸는 원의 Y좌표를 나타내기 위한 값으로 고정값.
             // 육각형의 좌표
-            PointF[] HexagonPoints = CalculateVertices(6, DrawingWidth / 2.0f, 90.0f,                                                // 6: 변의 개수, DrawingWidth / 2.0f : 도형을 감싸는 원의 지름, 90.0f : 점을 찍기 시작하는 각도
+            PointF[] HexagonPoints = CalculateVertices(6, Radius, 90.0f,                                                             // 6: 변의 개수, 90.0f : 점을 찍기 시작하는 각도
                                         new PointF(RectMargin.Left + DrawingWidth + GapWidth + DrawingWidth * 0.5f,                  // 도형을 감싸는 원의 X좌표. 0.5f는 도형을 감싸는 원의 X좌표를 나타내기 위한 값으로 고정값.
-                                                    RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f)); // 도형을 감싸는 원의 Y좌표. 0.5f는 도형을 감싸는 원의 Y좌표를 나타내기 위한 값으로 고정값.   
+                                                    RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f)); // 도형을 감싸는 원의 Y좌표. 0.5f는 도형을 감싸는 원의 Y좌표를 나타내기 위한 값으로 고정값.
             // 팔각형의 좌표
-            PointF[] OctagonPoints = CalculateVertices(8, DrawingWidth / 2.0f, 90.0f,                                                // 8: 변의 개수, DrawingWidth / 2.0f : 도형을 감싸는 원의 지름, 90.0f : 점을 찍기 시작하는 각도
+            PointF[] OctagonPoints = CalculateVertices(8, Radius, 90.0f,                                                             // 8: 변의 개수,  90.0f : 점을 찍기 시작하는 각도
                                         new PointF(RectMargin.Left + DrawingWidthDouble + GapWidthDouble + DrawingWidth * 0.5f,      // 도형을 감싸는 원의 X좌표. 0.5f는 도형을 감싸는 원의 X좌표를 나타내기 위한 값으로 고정값.
                                                     RectMargin.Top + DrawingHeightDouble + GapHeightDouble + DrawingHeight * 0.5f)); // 도형을 감싸는 원의 Y좌표. 0.5f는 도형을 감싸는 원의 Y좌표를 나타내기 위한 값으로 고정값.
+            
             // 평행사변형의 좌표
             PointF[] ParallelogramPoints =
             {
@@ -232,58 +246,62 @@ namespace WinForm
                                                      RectMargin.Top + DrawingHeightDouble + GapHeightDouble,                   // 초승달을 감싸는 사각형의 Y좌표.
                                                      DrawingWidth, DrawingHeight);                                             // 초승달을 감싸는 사각형의 너비와 높이.
             
+            if(Width > 0 && Height > 0)
+            {
+                // 원을 그린다.
+                DrawFigureInRect(e.Graphics, CircleRect, FigureFlag.Circle, FigureColor);
 
-            // 원을 그린다.
-            DrawFigureInRect(e.Graphics, CircleRect, FigureFlag.Circle, FigureColor);
+                // 타원을 그린다.
+                DrawFigureInRect(e.Graphics, EllipseRect, FigureFlag.Ellipse, FigureColor);
 
-            // 타원을 그린다.
-            DrawFigureInRect(e.Graphics, EllipseRect, FigureFlag.Ellipse, FigureColor);
+                // 계란을 그린다.
+                DrawFigureWithPoint(e.Graphics, OvalPoints, FigureFlag.Oval, FigureColor);
 
-            // 계란을 그린다.
-            DrawFigureWithPoint(e.Graphics, OvalPoints, FigureFlag.Oval, FigureColor);
+                // 네 잎을 그린다.
+                // 북쪽에 있는 잎을 그린다.
+                DrawFigureInRect(e.Graphics, NorthLeafRect, FigureFlag.Quartrefoil, FigureColor);
+                // 동쪽에 있는 잎을 그린다.
+                DrawFigureInRect(e.Graphics, EastLeafRect, FigureFlag.Quartrefoil, FigureColor);
+                // 남쪽에 있는 잎을 그린다.
+                DrawFigureInRect(e.Graphics, SouthLeafRect, FigureFlag.Quartrefoil, FigureColor);
+                // 서쪽에 있는 잎을 그린다.
+                DrawFigureInRect(e.Graphics, WestLeafRect, FigureFlag.Quartrefoil, FigureColor);
 
-            // 네 잎을 그린다.
-            // 북쪽에 있는 잎을 그린다.
-            DrawFigureInRect(e.Graphics, NorthLeafRect, FigureFlag.Quartrefoil, FigureColor);
-            // 동쪽에 있는 잎을 그린다.
-            DrawFigureInRect(e.Graphics, EastLeafRect, FigureFlag.Quartrefoil, FigureColor);
-            // 남쪽에 있는 잎을 그린다.
-            DrawFigureInRect(e.Graphics, SouthLeafRect, FigureFlag.Quartrefoil, FigureColor);
-            // 서쪽에 있는 잎을 그린다.
-            DrawFigureInRect(e.Graphics, WestLeafRect, FigureFlag.Quartrefoil, FigureColor);
+                // 곡선으로 이루어진 삼각형을 그린다.
+                DrawFigureWithPoint(e.Graphics, CurvilinearTrianglePoints, FigureFlag.CurvilinearTriangle, FigureColor);
 
-            // 곡선으로 이루어진 삼각형을 그린다.
-            DrawFigureWithPoint(e.Graphics, CurvilinearTrianglePoints, FigureFlag.CurvilinearTriangle, FigureColor);
+                // 정사각형을 그린다.
+                DrawFigureWithPoint(e.Graphics, SquarePoints, FigureFlag.Square, FigureColor);
 
-            // 정사각형을 그린다.
-            DrawFigureWithPoint(e.Graphics, SquarePoints, FigureFlag.Square, FigureColor);
+                // 직사각형을 그린다.
+                DrawFigureInRect(e.Graphics, RectAngle, FigureFlag.Rectangle, FigureColor);
 
-            // 직사각형을 그린다.
-            DrawFigureInRect(e.Graphics, RectAngle, FigureFlag.Rectangle, FigureColor);
+                // 삼각형을 그린다.
+                DrawFigureWithPoint(e.Graphics, TrianglePoints, FigureFlag.Triangle, FigureColor);
 
-            // 삼각형을 그린다.
-            DrawFigureWithPoint(e.Graphics, TrianglePoints, FigureFlag.Triangle, FigureColor);
+                // 사다리꼴을 그린다.
+                DrawFigureWithPoint(e.Graphics, TrapezoidPoints, FigureFlag.Trapezoid, FigureColor);
 
-            // 사다리꼴을 그린다.
-            DrawFigureWithPoint(e.Graphics, TrapezoidPoints, FigureFlag.Trapezoid, FigureColor);
+                // 마름모를 그린다.
+                DrawFigureWithPoint(e.Graphics, RhombusPoints, FigureFlag.Rhombus, FigureColor);
 
-            // 마름모를 그린다.
-            DrawFigureWithPoint(e.Graphics, RhombusPoints, FigureFlag.Rhombus, FigureColor);
+                // 오각형을 그린다.
+                DrawFigureWithPoint(e.Graphics, PentagonPoints, FigureFlag.Pentagon, FigureColor);
 
-            // 오각형을 그린다.
-            DrawFigureWithPoint(e.Graphics, PentagonPoints, FigureFlag.Pentagon, FigureColor);
+                // 육각형을 그린다.
+                DrawFigureWithPoint(e.Graphics, HexagonPoints, FigureFlag.Hexagon, FigureColor);
 
-            // 육각형을 그린다.
-            DrawFigureWithPoint(e.Graphics, HexagonPoints, FigureFlag.Hexagon, FigureColor);
+                // 팔각형을 그린다.
+                DrawFigureWithPoint(e.Graphics, OctagonPoints, FigureFlag.Octagon, FigureColor);
 
-            // 팔각형을 그린다.
-            DrawFigureWithPoint(e.Graphics, OctagonPoints, FigureFlag.Octagon, FigureColor);
+                // 평행사변형을 그린다.
+                DrawFigureWithPoint(e.Graphics, ParallelogramPoints, FigureFlag.Paralelogram, FigureColor);
 
-            // 평행사변형을 그린다.
-            DrawFigureWithPoint(e.Graphics, ParallelogramPoints, FigureFlag.Paralelogram, FigureColor);
+                // 초승달을 그린다.
+                DrawFigureInRect(e.Graphics, CrescentRect, FigureFlag.Crescent, FigureColor);
+            }
 
-            // 초승달을 그린다.
-            DrawFigureInRect(e.Graphics, CrescentRect, FigureFlag.Crescent, FigureColor);
+            System.Diagnostics.Debug.WriteLine("현재 패널의 너비: {0}, 현재 패널의 높이: {1}", Width, Height);
         }
 
         // 사각형 안에 도형을 그리는 함수
@@ -340,7 +358,7 @@ namespace WinForm
                         float GapWidthQuad = GapWidth * 4.0f;
                         // 드로잉 높이
                         float DrawingHeight = (panel1.ClientRectangle.Height - (RectMargin.Top + RectMargin.Bottom)) / 3.2f; // 3.2f는 드로잉의 너비의 비율로 고정값.
-                        // 드로잉 높이의 2배                                                                                                     // 드로잉 높이의 2배
+                        // 드로잉 높이의 2배                                                                                                     
                         float DrawingHeightDouble = DrawingHeight * 2.0f;
                         // 드로잉 구역의 간격의 높이
                         float GapHeight = DrawingHeight * 0.1f;
@@ -467,9 +485,10 @@ namespace WinForm
             PointF xy = new PointF();
             // 라디안을 구한다.
             double radians = Degrees * Math.PI / 180.0;
+            // 도형을 둘러싸는 사각형의 
 
             // X 좌표를 구한다. 반지름이 1인 원으로 계산한다.
-            xy.X = (float)Math.Cos(radians) * Radius + Origin.X;
+            xy.X = ((float)Math.Cos(radians) * Radius + Origin.X);
             // Y 좌표를 구한다. 반지름이 1인 원으로 계산한다.
             xy.Y = (float)Math.Sin(-radians) * Radius + Origin.Y;
 
