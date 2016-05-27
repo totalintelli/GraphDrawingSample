@@ -246,7 +246,7 @@ namespace WinForm
                                                      RectMargin.Top + DrawingHeightDouble + GapHeightDouble,                   // 초승달을 감싸는 사각형의 Y좌표.
                                                      DrawingWidth, DrawingHeight);                                             // 초승달을 감싸는 사각형의 너비와 높이.
             
-            if(Width > 0 && Height > 0)
+            if(Width > 80 && Height > 80)
             {
                 // 원을 그린다.
                 DrawFigureInRect(e.Graphics, CircleRect, FigureFlag.Circle, FigureColor);
