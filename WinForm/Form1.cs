@@ -66,7 +66,6 @@ namespace WinForm
                 DrawOval(e.Graphics, DrawingRect, FigureColor);
 
                 // 네 잎을 그린다.
-                // 북쪽에 있는 잎을 그린다.
                 DrawFourLeaf(e.Graphics, DrawingRect, FigureColor);
 
                 // 곡선으로 이루어진 삼각형을 그린다.
@@ -78,7 +77,7 @@ namespace WinForm
                 // 직사각형을 그린다.
                 DrawRectAngle(e.Graphics, DrawingRect, FigureColor);
 
-                // 삼각형을 그린다.
+                // 정삼각형을 그린다.
                 DrawTriangle(e.Graphics, DrawingRect, FigureColor);
 
                 // 사다리꼴을 그린다.
@@ -104,12 +103,24 @@ namespace WinForm
             }
         }
 
+        /// <summary>
+        /// 원을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawCircle(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 원을 그린다.
             gr.FillEllipse(FigureColor, DrawingRect);
         }
 
+        /// <summary>
+        /// 타원을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawEllipse(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 너비의 2배
@@ -128,6 +139,12 @@ namespace WinForm
             gr.FillEllipse(FigureColor, EllipseRect);
         }
 
+        /// <summary>
+        /// 계란을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawOval(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 너비의 2배
@@ -152,6 +169,12 @@ namespace WinForm
             
         }
 
+        /// <summary>
+        /// 네 잎을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawFourLeaf(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 너비의 3배
@@ -185,6 +208,12 @@ namespace WinForm
             gr.FillEllipse(FigureColor, WestLeafRect);
         }
 
+        /// <summary>
+        /// 곡선으로 이루어진 삼각형을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawCurvilinearTriangle(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 너비의 4배
@@ -208,6 +237,11 @@ namespace WinForm
             gr.FillClosedCurve(FigureColor, CurvilinearTrianglePoints);
         }
 
+        /// <summary>
+        /// 지름의 길이를 구한다.
+        /// </summary>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <returns>도형을 둘러싼 사각형의 지름</returns>
         private float GetRadius(RectangleF DrawingRect)
         {
             // 정다각형을 둘러싸는 원의 지름
@@ -226,6 +260,12 @@ namespace WinForm
             return Radius;
         }
 
+        /// <summary>
+        /// 정사각형을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawSquare(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 구역의 간격의 높이
@@ -241,6 +281,12 @@ namespace WinForm
             gr.FillPolygon(FigureColor, SquarePoints);
         }
 
+        /// <summary>
+        /// 직사각형을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawRectAngle(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 구역의 간격의 너비
@@ -255,6 +301,12 @@ namespace WinForm
             gr.FillRectangle(FigureColor, RectAngle);
         }
 
+        /// <summary>
+        /// // 정삼각형을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawTriangle(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 구역의 간격의 높이
@@ -276,6 +328,12 @@ namespace WinForm
             gr.FillPolygon(FigureColor, TrianglePoints);
         }
 
+        /// <summary>
+        /// 사다리꼴을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawTrapezoid(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 너비의 3배
@@ -306,6 +364,12 @@ namespace WinForm
                                                                  (byte)PathPointType.Line, (byte) PathPointType.Line})));
         }
 
+        /// <summary>
+        /// 마름모를 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawRhombus(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 너비의 4배
@@ -334,6 +398,12 @@ namespace WinForm
                                                                  (byte)PathPointType.Line, (byte) PathPointType.Line})));
         }
 
+        /// <summary>
+        /// 오각형을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawPentagon(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 정다각형을 둘러싸는 원의 지름을 구한다.
@@ -353,6 +423,12 @@ namespace WinForm
             gr.FillPolygon(FigureColor, PentagonPoints);
         }
 
+        /// <summary>
+        /// 육각형을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawHexagon(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 높이의 2배
@@ -374,6 +450,12 @@ namespace WinForm
             gr.FillPolygon(FigureColor, HexagonPoints);
         }
 
+        /// <summary>
+        /// 팔각형을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawOctagon(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 너비의 2배
@@ -399,6 +481,12 @@ namespace WinForm
             gr.FillPolygon(FigureColor, OctagonPoints);
         }
 
+        /// <summary>
+        /// 평행사변형을 그린다.
+        /// </summary>
+        /// <param name = "gr" > 그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawParallelogram(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 너비의 3배
@@ -430,6 +518,12 @@ namespace WinForm
             gr.FillPolygon(FigureColor, ParallelogramPoints);
         }
 
+        /// <summary>
+        /// 초승달을 그린다.
+        /// </summary>
+        /// <param name="gr">그래픽스 객체</param>
+        /// <param name="DrawingRect">도형을 둘러싼 사각형</param>
+        /// <param name="FigureColor">도형의 색상</param>
         private void DrawCrescent(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
             // 드로잉 너비의 4배
