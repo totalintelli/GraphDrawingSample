@@ -123,14 +123,8 @@ namespace WinForm
         /// <param name="FigureColor">도형의 색상</param>
         private void DrawEllipse(Graphics gr, RectangleF DrawingRect, SolidBrush FigureColor)
         {
-            // 드로잉 너비의 2배
-            float DrawingWidthDouble = DrawingRect.Width * 2.0f;
-            // 드로잉 너비의 3배
-            float DrawingWidthTriple = DrawingRect.Width * 3.0f;
             // 드로잉 구역의 간격의 너비
             float GapWidth = DrawingRect.Width * 0.1f; // 0.1f는 드로잉 구역의 간격의 너비의 비율로 고정값.                                                                                          
-            // 드로잉 구역의 간격의 너비의 2배
-            float GapWidthDouble = GapWidth * 2.0f;
             // 타원을 그리는 사각형
             RectangleF EllipseRect 
                 = new RectangleF(DrawingRect.X + DrawingRect.Width + GapWidth + DrawingRect.Width * 0.15f, DrawingRect.Y, DrawingRect.Width * 0.7f, DrawingRect.Height);
