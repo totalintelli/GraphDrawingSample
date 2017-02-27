@@ -157,11 +157,11 @@ namespace WinForm
             float GapWidthDouble = GapWidth * 2.0f;
             // 계란의 좌표
             PointF[] OvalPoints =
-            {     new PointF(DrawingRect.X + DrawingWidthDouble + GapWidthDouble + DrawingRect.Width * 0.3f, DrawingRect.Y + DrawingRect.Height * 0.1f),     // 계란 윗 부분의 왼쪽.0.3f과 0.1f는 계란의 윗부분의 위치를 나타내는 값으로 고정값.
-                  new PointF(DrawingRect.X + DrawingWidthDouble + GapWidthDouble + DrawingRect.Width * 0.1f, DrawingRect.Y + DrawingRect.Height * 3 / 4.0f), // 계란 중간 부분의 왼쪽.0.1f와 3 / 4.0f는 계란의 중간 부분의 위치를 나타내는 값으로 고정값.
-                  new PointF(DrawingRect.X + DrawingWidthDouble + GapWidthDouble + DrawingRect.Width * 0.5f, DrawingRect.Y + DrawingRect.Height),            // 계란의 아랫 부분.0.5f는 계란의 아랫 부분의 위치를 나타내는 값으로 고정값.
+            {     new PointF(DrawingRect.X + DrawingWidthDouble + GapWidthDouble + DrawingRect.Width * 0.3f, DrawingRect.Y + DrawingRect.Height * 0.1f),     // 계란 윗 부분의 왼쪽. 0.3f과 0.1f는 계란의 윗부분의 위치를 나타내는 값으로 고정값.
+                  new PointF(DrawingRect.X + DrawingWidthDouble + GapWidthDouble + DrawingRect.Width * 0.1f, DrawingRect.Y + DrawingRect.Height * 3 / 4.0f), // 계란 중간 부분의 왼쪽. 0.1f와 3 / 4.0f는 계란의 중간 부분의 위치를 나타내는 값으로 고정값.
+                  new PointF(DrawingRect.X + DrawingWidthDouble + GapWidthDouble + DrawingRect.Width * 0.5f, DrawingRect.Y + DrawingRect.Height),            // 계란의 아랫 부분. 0.5f는 계란의 아랫 부분의 위치를 나타내는 값으로 고정값.
                   new PointF(DrawingRect.X + DrawingWidthTriple + GapWidthDouble - DrawingRect.Width * 0.1f, DrawingRect.Y + DrawingRect.Height * 3 / 4.0f), // 계란의 중간 부분의 오른쪽. 0.1f와 3 / 4.0f는 계란의 중간 부분의 위치를 나타내는 값으로 고정값.
-                  new PointF(DrawingRect.X + DrawingWidthDouble + GapWidthDouble + DrawingRect.Width * 0.7f, DrawingRect.Y + DrawingRect.Height * 0.1f)      // 계란의 윗부분의 오른쪽0.7f와 0.1f는 계란의 윗부분의 위치를 나타내는 값으로 고정값.
+                  new PointF(DrawingRect.X + DrawingWidthDouble + GapWidthDouble + DrawingRect.Width * 0.7f, DrawingRect.Y + DrawingRect.Height * 0.1f)      // 계란의 윗부분의 오른쪽. 0.7f와 0.1f는 계란의 윗부분의 위치를 나타내는 값으로 고정값.
             };
 
             // 계란을 그린다.
@@ -578,11 +578,10 @@ namespace WinForm
             PointF xy = new PointF();
             // 라디안을 구한다.
             double radians = Degrees * Math.PI / 180.0;
-            // 도형을 둘러싸는 사각형의 
 
-            // X 좌표를 구한다. 반지름이 1인 원으로 계산한다.
+            // 도형을 둘러싸는 사각형의 X 좌표를 구한다. 반지름이 1인 원으로 계산한다.
             xy.X = ((float)Math.Cos(radians) * Radius + Origin.X);
-            // Y 좌표를 구한다. 반지름이 1인 원으로 계산한다.
+            // 도형을 둘러싸는 사각형의 Y 좌표를 구한다. 반지름이 1인 원으로 계산한다.
             xy.Y = (float)Math.Sin(-radians) * Radius + Origin.Y;
 
             return xy;
