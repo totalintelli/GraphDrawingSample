@@ -35,9 +35,9 @@ namespace WinForm
             // 마진
             Padding RectMargin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             // 드로잉 너비
-            float DrawingWidth = (panel1.ClientRectangle.Width - (RectMargin.Right + RectMargin.Left)) / 5.4f;   // 5.4f는 드로잉의 너비의 비율로 고정값.
+            float DrawingWidth = (panel1.ClientRectangle.Width - (RectMargin.Right + RectMargin.Left)) / 5.4f;   // 5.4f는 드로잉의 너비의 비율로 고정값. 가로로 도형이 5개가 놓여있기 때문에 5보다 큼.
             // 드로잉 높이
-            float DrawingHeight = (panel1.ClientRectangle.Height - (RectMargin.Top + RectMargin.Bottom)) / 3.2f; // 3.2f는 드로잉의 너비의 비율로 고정값.
+            float DrawingHeight = (panel1.ClientRectangle.Height - (RectMargin.Top + RectMargin.Bottom)) / 3.2f; // 3.2f는 드로잉의 높이의 비율로 고정값. 세로로 도형이 3개가 놓여있기 때문에 3보다 큼.
             // 도형을 둘러싼 사각형
             RectangleF DrawingRect = new RectangleF(RectMargin.Left, RectMargin.Top, DrawingWidth, DrawingHeight);
             
